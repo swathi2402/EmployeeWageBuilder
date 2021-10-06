@@ -41,6 +41,7 @@
     const FULL_TIME_HOURS = 8;
     const WAGE_PER_HOUR = 20;
     const NUM_OF_WORING_DAYS = 20;
+    const MAX_HOURS_IN_MONTH = 160;
 
 
     function getWorkingHours(empCheck){
@@ -55,10 +56,12 @@
     }
     
     let totalEmployeeHours = 0;
-    for (let day = 0; day < NUM_OF_WORING_DAYS; day++){
+    let totalWorkingDays = 0;
+    while(totalEmployeeHours <= MAX_HOURS_IN_MONTH && totalWorkingDays < NUM_OF_WORING_DAYS) {
+        totalWorkingDays++;
         let empCheck = Math.floor(Math.random() * 10) % 3;
-        totalEmployeeHours+= getWorkingHours(empCheck);
+        totalEmployeeHours += getWorkingHours(empCheck);
     }
     let employeeWage = totalEmployeeHours * WAGE_PER_HOUR;
-    console.log("Working Hour: " + totalEmployeeHours + " Employee Wage: "+ employeeWage);
+    console.log("Total Days: " + totalWorkingDays + " Total Hours: " + totalEmployeeHours + " Employee Wage: " + employeeWage);
 }
