@@ -1,10 +1,6 @@
 
   
 class EmployeePayrollData {
-    id;
-    salary;
-    gender;
-    startDate;
 
     constructor(...params) {
         this.id = params[0];
@@ -24,6 +20,45 @@ class EmployeePayrollData {
         else throw 'Name is incorrect';
     }
 
+    get id() {
+        return this._id;
+    }
+
+    set id(id) {
+        let idRegex = RegExp('^\d*[1-9]\d*$')
+        if(idRegex.test(id)) this._id = id;
+        else throw 'ID is incorrect';
+    }
+
+    get salary() {
+        return this._salary; 
+    }
+
+    set salary(salary) {
+        let salaryRegex = RegExp('^[0-9.]+$')
+        if(salaryRegex.test(salary)) this._salary = salary;
+        else throw 'Salary is incorrect';
+    }
+
+    get gender() {
+        return this._gender; 
+    }
+
+    set gender(gender) {
+        let genderRegex = RegExp('^[MFmf]{1}$')
+        if(genderRegex.test(gender)) this._gender = gender;
+        else throw 'gender is incorrect';
+    }
+
+    get startDate() {
+        return this._startDate;
+    }
+
+    set startDate(startDate) {
+        if(new Date() < startDate) throw 'Start date is invalid!';
+        else this._startDate = startDate;
+    }
+
     
 
     toString() {
@@ -34,15 +69,9 @@ class EmployeePayrollData {
     }
 } 
 
-let employeePayrollData  = new EmployeePayrollData(1, "Mark", 30000);
-console.log("employeePayrollData: " + employeePayrollData.toString());
-employeePayrollData.id = 0;
 try {
-    employeePayrollData.name = 'jeff';
-    console.log("employeePayrollData: " + employeePayrollData.toString());
+    let newEmployeePayrllData  = new EmployeePayrollData(1, "Terissa", 30000, 'F', new Date());
+    console.log("employeePayrollData: " + newEmployeePayrllData.toString());
 } catch (e) {
     console.error(e);
-}
-
-let newEmployeePayrllData  = new EmployeePayrollData(1, "Terissa", 30000, 'f', new Date());
-console.log("employeePayrollData: " + newEmployeePayrllData.toString());
+}  
