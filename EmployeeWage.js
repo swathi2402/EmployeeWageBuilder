@@ -47,3 +47,12 @@ console.log("Total Days: " + totalWorkingDays + " Total Hours: " + totalEmployee
 
 // UC 10
 console.log("UC10 Daily hours worked and wage earned: " + empDailyHoursAndWageArr); 
+
+// UC 11
+let totalWages = empDailyHoursAndWageArr
+                .filter(dailyHrsAndWage => dailyHrsAndWage.dailyWage > 0)
+                .reduce((totalWage, dailyHrsAndWage) => totalWage += dailyHrsAndWage.dailyWage, 0);
+let totalHours = empDailyHoursAndWageArr
+                .filter(dailyHrsAndWage=> dailyHrsAndWage.dailyWage > 0)
+                .reduce((totalHours, dailyHrsAndWage) => totalHours += dailyHrsAndWage.dailyHours, 0);
+console.log("UC11A Total Hours: " + totalHours + " Total Wage: " + totalWages);
