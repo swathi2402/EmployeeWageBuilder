@@ -37,7 +37,7 @@ while(totalEmployeeHours<=MAX_HOURS_IN_MONTH &&
         dailyHours: empHours,
         dailyWage: calclateDailyWage(empHours),
         toString(){
-            return '\nDay' + this.dayNum +'=> Working Hours is ' + this.dailyHours + ' And Wage Earned =' + this.dailyWage
+            return '\nDay' + this.dayNum +' => Working Hours is ' + this.dailyHours + ' And Wage Earned = ' + this.dailyWage
         },
     });
     
@@ -53,10 +53,15 @@ let totalWages = empDailyHoursAndWageArr
                 .filter(dailyHrsAndWage => dailyHrsAndWage.dailyWage > 0)
                 .reduce((totalWage, dailyHrsAndWage) => totalWage += dailyHrsAndWage.dailyWage, 0);
 let totalHours = empDailyHoursAndWageArr
-                .filter(dailyHrsAndWage=> dailyHrsAndWage.dailyWage > 0)
+                .filter(dailyHrsAndWage => dailyHrsAndWage.dailyWage > 0)
                 .reduce((totalHours, dailyHrsAndWage) => totalHours += dailyHrsAndWage.dailyHours, 0);
 console.log("UC11A Total Hours: " + totalHours + " Total Wage: " + totalWages);
 
 process.stdout.write("UC11B Logging full work days")
-empDailyHoursAndWageArr.filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours== 8)
+empDailyHoursAndWageArr.filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours == 8)
                        .forEach(dailyHrsAndWage => process.stdout.write(dailyHrsAndWage.toString()));
+
+let partWorkingDayStrArr = empDailyHoursAndWageArr
+                            .filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours == 4)
+                            .map(dailyHrsAndWage => dailyHrsAndWage.toString());
+console.log("\nUC11C PartWorkingDaysStrings:" + partWorkingDayStrArr);
